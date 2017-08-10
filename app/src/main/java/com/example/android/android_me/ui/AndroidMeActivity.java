@@ -16,6 +16,7 @@
 
 package com.example.android.android_me.ui;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,20 +36,29 @@ public class AndroidMeActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             Log.d("TEST" , "Saved InstanceState is null");
 
+            //Retrieve the index values from Bundle.
+
+            Intent i = getIntent();
+            Bundle b = i.getExtras();
+            int headIndex = b.getInt("headIndex");
+            int bodyIndex = b.getInt("bodyIndex");
+            int legIndex =  b.getInt("legIndex");
+
             BodyPartFragment headPartFragment = new BodyPartFragment();
             headPartFragment.setImageList(AndroidImageAssets.getHeads());
-            headPartFragment.setmImageIndex(1);
+            //set the image index for head.
+            headPartFragment.setmImageIndex(headIndex);
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().add(R.id.head_container, headPartFragment).commit();
 
             BodyPartFragment bodyPartFragment = new BodyPartFragment();
             bodyPartFragment.setImageList(AndroidImageAssets.getBodies());
-            bodyPartFragment.setmImageIndex(1);
+            bodyPartFragment.setmImageIndex(bodyIndex);
             fragmentManager.beginTransaction().add(R.id.body_container, bodyPartFragment).commit();
 
             BodyPartFragment legPartFragment = new BodyPartFragment();
             legPartFragment.setImageList(AndroidImageAssets.getLegs());
-            legPartFragment.setmImageIndex(1);
+            legPartFragment.setmImageIndex(legIndex);
             fragmentManager.beginTransaction().add(R.id.leg_container, legPartFragment).commit();
         }
 
