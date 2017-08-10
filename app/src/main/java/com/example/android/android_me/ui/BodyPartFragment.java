@@ -30,10 +30,13 @@ public class BodyPartFragment extends Fragment {
         //inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_body_part, container, false);
         //get the reference of the ImageView in the layout
-        ImageView imageView = (ImageView) view.findViewById(R.id.body_part_image_view);
+        final ImageView imageView = (ImageView) view.findViewById(R.id.body_part_image_view);
         //set the image inside the ImageView.For the time being we want to show the first image in the List<Integer> heads.
         //imageView.setImageResource(AndroidImageAssets.getHeads().get(0));
         imageView.setImageResource(mImageIdList.get(mImageIndex));
+
+
+
         return view;
     }
 
